@@ -14,9 +14,9 @@
 <body class="flex-column min-100-vh">
   <header class="hero">
     <h1 class="app-title">
-      <i class="fab fa-github"></i> Git it Done!
+       Weather Forecast
     </h1>
-    <p>Search for a GitHub user or click on a language to see a list of repositories and how many open issues they have!
+    <p>Search for a new city or select a previously searched city from the list!
     </p>
   </header>
 
@@ -25,26 +25,24 @@
     <div class="col-12 col-md-4">
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search By User</h3>
+        <h3 class="card-header text-uppercase">Search By City</h3>
         <form id="user-form" class="card-body">
-          <label class="form-label" for="username">Username</label>
+          <label class="form-label" for="username">City</label>
           <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-          <button type="submit" class="btn">Get User</button>
+          <button type="submit" class="btn">Get Weather</button>
         </form>
       </div>
 
       <div class="card">
-        <h3 class="card-header text-uppercase">Search By Topic</h3>
-        <div id="language-buttons" class="card-body">
-          <button data-language="javascript" class="btn">JavaScript</button>
-          <button data-language="html" class="btn">HTML</button>
-          <button data-language="css" class="btn">CSS</button>
+        <h3 class="card-header text-uppercase">Previously Searched Cities</h3>
+        <div id="search history" class="card-body">
+         
         </div>
       </div>
     </div>
 
     <div class="col-12 col-md-8">
-      <h2 class="subtitle">Showing Repositories for: <span id="repo-search-term"></span></h2>
+      <h2 class="subtitle">Showing weather for: <span id="repo-search-term"></span></h2>
       <div id="repos-container" class="list-group"></div>
     </div>
   </main>
