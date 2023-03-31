@@ -26,13 +26,14 @@ searchHistory.addEventListener('click', function(event) {
 
 // Geocode city name to get latitude and longitude
 async function geocode(city) {
-  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(city)}.json?access_token={2943a7908b1bb114d559f8b52228f1f7}`;
+  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=2943a7908b1bb114d559f8b52228f1f7`;
   try {
     const response = await fetch(url);
     const data = await response.json();
-    const { center } = data.features[0];
-    const [longitude, latitude] = center;
-    getWeather(latitude, longitude, city);
+    console.log(data);
+   // const { center } = data.features[0];
+    //const [longitude, latitude] = center;
+    getWeather(data[0].lat,data[0].lon,city);
   } catch (error) {
     console.error(error);
     alert('An error occurred while geocoding the city.');
@@ -41,7 +42,7 @@ async function geocode(city) {
 
 // Get weather data from API
 async function getWeather(latitude, longitude, city) {
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid={2943a7908b1bb114d559f8b52228f1f7}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=2943a7908b1bb114d559f8b52228f1f7&units=metric`;
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -56,7 +57,7 @@ async function getWeather(latitude, longitude, city) {
 function displayWeather(data, city) {
   // Update search term
   searchTerm.textContent = city;
-
+reposContainer.innerHTML="";
   // Create weather card
   const card = document.createElement('div');
   card.classList.add('card');
